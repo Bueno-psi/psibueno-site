@@ -1,1 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} | Gabriel Bueno - Psicólogo</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Variáveis Globais */
+    :root {
+      --bg-color: #F8F6F0;       
+      --bg-alt: #EFECE4;         
+      --text-main: #20261F;      
+      --text-muted: #575D55;     
+      --btn-green: #4D5945;      
+      --btn-green-hover: #3C4636;
+      --border: #E2DDD3;         
+      --card-bg: #FFFFFF;
+    }
 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .logo-name, blockquote { font-family: 'Playfair Display', serif; }
+    a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+    
+    /* Área restrita para leitura confortável */
+    .content-container { max-width: 720px; margin: 0 auto; padding: 0 5%; }
+
+    /* Navegação Padrão */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      border-bottom: 1px solid var(--border);
+    }
+    .logo .logo-name { font-size: 22px; font-weight: 700; color: var(--text-main); margin-bottom: 2px; }
+    .logo .logo-subtitle { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); font-weight: 500; }
+    .nav-right { display: flex; align-items: center; gap: 32px; }
+    .nav-links { display: flex; gap: 24px; font-size: 14px; color: var(--text-muted); font-weight: 500; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text-main); }
+
+    /* Botões */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; border-radius: 6px; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s ease; }
+    .btn-primary { background-color: var(--btn-green); color: #FFF; border: 1px solid var(--btn-green); }
+    .btn-primary:hover { background-color: var(--btn-green-hover); border-color: var(--btn-green-hover); }
+    .btn-secondary { background-color: transparent; color: var(--text-main); border: 1px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--text-muted); }
+
+    /* Cabeçalho do Artigo */
+    .article-header { padding: 80px 0 40px; text-align: center; }
+    .article-meta { display: flex; justify-content: center; align-items: center; gap: 16px; margin-bottom: 24px; }
+    .article-tag { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--btn-green); font-weight: 600; background: var(--bg-alt); padding: 6px 14px; border-radius: 50px; }
+    .article-date { font-size: 14px; color: var(--text-muted); }
+    .article-title { font-size: 48px; line-height: 1.15; color: var(--text-main); margin-bottom: 24px; }
+    .article-subtitle { font-size: 20px; color: var(--text-muted); font-weight: 400; margin-bottom: 0; }
+
+    /* Imagem de Destaque */
+    .article-hero-image { width: 100%; max-width: 1000px; margin: 0 auto 60px; display: block; border-radius: 16px; height: 450px; object-fit: cover; background-color: var(--bg-alt); }
+
+    /* Corpo do Artigo */
+    .article-body { padding-bottom: 80px; }
+    .article-body p { font-size: 18px; color: var(--text-muted); margin-bottom: 24px; }
+    .article-body h2 { font-size: 28px; color: var(--text-main); margin: 48px 0 20px; }
+    .article-body h3 { font-size: 22px; color: var(--text-main); margin: 32px 0 16px; }
+    .article-body blockquote { font-size: 24px; line-height: 1.4; color: var(--btn-green); margin: 40px 0; padding-left: 24px; border-left: 3px solid var(--btn-green); font-style: italic; }
+    .article-body ul, .article-body ol { margin: 0 0 24px 24px; font-size: 18px; color: var(--text-muted); }
+    .article-body li { margin-bottom: 12px; }
+
+    /* Seção CTA Final */
+    .cta-section { background-color: var(--bg-alt); padding: 80px 0; text-align: center; margin-top: 40px; }
+    .cta-section h2 { font-size: 32px; margin-bottom: 16px; }
+    .cta-section p { font-size: 18px; color: var(--text-muted); margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .article-title { font-size: 36px; }
+      .article-subtitle { font-size: 18px; }
+      .article-hero-image { height: 300px; border-radius: 8px; margin-bottom: 40px; }
+      .article-body p, .article-body ul { font-size: 16px; }
+      .article-body blockquote { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navegação -->
+  <nav>
+    <div class="logo">
+      <div class="logo-name">Gabriel Bueno</div>
+      <div class="logo-subtitle"> Psicólogo CRP/SC 12/28735</div>
+    </div>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="{{ site.url }}/index.html#sobre">Sobre</a>
+        <a href="{{ site.url }}/index.html#abordagem">Abordagem</a>
+        <a href="{{ site.url }}/index.html#servicos">Serviços</a>
+        <a href="{{ site.url }}/blog.html" class="active">Blog</a>
+      </div>
+      <a href="https://wa.me/5548999220575" target="_blank" class="btn btn-primary">Agende um horário</a>
+    </div>
+  </nav>
+
+  <!-- Cabeçalho do Artigo -->
+  <header class="article-header content-container">
+    <div class="article-meta">
+      <!-- A categoria e a data serão puxadas automaticamente do seu arquivo de texto -->
+      <span class="article-tag">{{ page.category }}</span>
+      <span class="article-date">{{ page.date | date: "%d/%m/%Y" }}</span>
+    </div>
+    <h1 class="article-title">{{ page.title }}</h1>
+    
+    <!-- Se você escrever um subtítulo, ele aparece. Se não, esta parte fica oculta. -->
+    {% if page.subtitle %}
+      <p class="article-subtitle">{{ page.subtitle }}</p>
+    {% endif %}
+  </header>
+
+  <!-- Imagem de Destaque -->
+  {% if page.image %}
+  <div class="container">
+    <img src="{{ page.image }}" alt="Imagem do artigo" class="article-hero-image">
+  </div>
+  {% endif %}
+
+  <!-- Corpo do Artigo (Onde seu texto em Markdown será injetado) -->
+  <main class="article-body content-container">
+    {{ content }}
+  </main>
+
+  <!-- CTA Final -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Deseja aprofundar essas questões?</h2>
+      <p>A escrita e a teoria ajudam a contornar o que sentimos, mas é no espaço singular da análise que estas questões encontram sua verdadeira escuta.</p>
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+        <a href="https://wa.me/5548999220575" target="_blank" class="btn btn-primary">Agendar uma primeira conversa</a>
+        <a href="{{ site.url }}/blog.html" class="btn btn-secondary">Ler mais artigos</a>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
