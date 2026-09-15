@@ -16,12 +16,13 @@
             color: #F5F5DC; /* Bege */
             font-family: 'Georgia', serif;
             text-align: center;
+            position: relative;
         }
         .container {
             padding: 40px 60px;
             border: 2px solid #F5F5DC;
             border-radius: 12px;
-            background-color: rgba(245, 245, 220, 0.05); /* Fundo sutil */
+            background-color: rgba(245, 245, 220, 0.05);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             max-width: 80%;
         }
@@ -42,18 +43,33 @@
             opacity: 0.8;
             font-style: italic;
         }
+
+        /* Botão discreto no canto inferior direito */
+        .admin-btn {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: transparent;
+            border: 1px solid rgba(245, 245, 220, 0.3);
+            color: #F5F5DC;
+            padding: 8px 14px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0.6;
+        }
+        .admin-btn:hover {
+            opacity: 1;
+            border-color: #F5F5DC;
+            background-color: rgba(245, 245, 220, 0.1);
+        }
         
         /* Responsividade para telas menores */
         @media (max-width: 600px) {
-            h1 {
-                font-size: 2em;
-            }
-            p {
-                font-size: 1.2em;
-            }
-            .container {
-                padding: 30px 20px;
-            }
+            h1 { font-size: 2em; }
+            p { font-size: 1.2em; }
+            .container { padding: 30px 20px; }
         }
     </style>
 </head>
@@ -63,5 +79,23 @@
         <p>O acesso ao site será disponibilizado em breve.</p>
         <p class="aviso">Agradecemos a visita e logo traremos novidades.</p>
     </div>
+
+    <!-- Botão de Acesso Restrito -->
+    <button class="admin-btn" onclick="solicitarSenha()">Área Restrita</button>
+
+    <script>
+        function solicitarSenha() {
+            const senhaCorreta = "9159"; 
+            
+            const senhaDigitada = prompt("Digite a senha de acesso:");
+
+            if (senhaDigitada === senhaCorreta) {
+                // Altere 'index.html' para a página de destino após acertar a senha
+                window.location.href = "pagina-inicial.html"; 
+            } else if (senhaDigitada !== null) {
+                alert("Senha incorreta!");
+            }
+        }
+    </script>
 </body>
 </html>
