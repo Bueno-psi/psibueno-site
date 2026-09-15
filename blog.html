@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | Gabriel Bueno - Psicólogo</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Variáveis de Cores */
+    :root {
+      --bg-color: #F8F6F0;       
+      --bg-alt: #EFECE4;         
+      --text-main: #20261F;      
+      --text-muted: #575D55;     
+      --btn-green: #4D5945;      
+      --btn-green-hover: #3C4636;
+      --border: #E2DDD3;         
+      --card-bg: #FFFFFF;
+      --icon-bg: #EBE7E0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .logo-name, .blog-title {
+      font-family: 'Playfair Display', serif;
+    }
+
+    a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+
+    /* Navegação */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+    }
+    .logo .logo-name { font-size: 22px; font-weight: 700; color: var(--text-main); margin-bottom: 2px; }
+    .logo .logo-subtitle { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); font-weight: 500; }
+    .nav-right { display: flex; align-items: center; gap: 32px; }
+    .nav-links { display: flex; gap: 24px; font-size: 14px; color: var(--text-muted); font-weight: 500; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text-main); }
+
+    /* Botões */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 12px 24px; border-radius: 6px; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s ease;
+    }
+    .btn-primary { background-color: var(--btn-green); color: #FFF; border: 1px solid var(--btn-green); }
+    .btn-primary:hover { background-color: var(--btn-green-hover); border-color: var(--btn-green-hover); }
+
+    /* Seções e Cabeçalhos */
+    section { padding: 100px 0; width: 100%; }
+    .hero-section { padding: 80px 0 60px; text-align: center; }
+    .hero-section h1 { font-size: 48px; line-height: 1.1; margin-bottom: 16px; color: var(--text-main); }
+    .hero-section p { font-size: 18px; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
+    
+    /* Layout Específico do Blog */
+    .blog-filters {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--btn-green);
+      color: #FFF;
+      border-color: var(--btn-green);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    /* Cards de Postagem */
+    .blog-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+    }
+    .blog-image {
+      width: 100%;
+      height: 220px;
+      background-color: var(--bg-alt);
+      object-fit: cover;
+      display: block;
+    }
+    .blog-content {
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .blog-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .blog-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--btn-green);
+      font-weight: 600;
+    }
+    .blog-date {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .blog-title {
+      font-size: 22px;
+      color: var(--text-main);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .blog-excerpt {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+    .blog-link {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-main);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .blog-link svg {
+      transition: transform 0.2s ease;
+    }
+    .blog-card:hover .blog-link svg {
+      transform: translateX(4px);
+    }
+
+    /* Responsividade */
+    @media (max-width: 992px) {
+      .grid-3 { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .hero-section h1 { font-size: 36px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navegação -->
+  <nav>
+    <div class="logo">
+      <div class="logo-name">Gabriel Bueno</div>
+      <div class="logo-subtitle"> Psicólogo CRP/SC 12/28735</div>
+    </div>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="{{ site.url }}/index.html#sobre">Sobre</a>
+        <a href="{{ site.url }}/index.html#abordagem">Abordagem</a>
+        <a href="{{ site.url }}/index.html#servicos">Serviços</a>
+        <a href="{{ site.url }}/blog.html" class="active">Blog</a>
+        <a href="{{ site.url }}/index.html#contato">Contato</a>
+      </div>
+      <a href="https://wa.me/5548999220575" target="_blank" class="btn btn-primary">
+        Agende um horário
+      </a>
+    </div>
+  </nav>
+
+  <!-- Cabeçalho do Blog -->
+  <section class="hero-section">
+    <div class="container">
+      <h1>Artigos e Reflexões</h1>
+      <p>Um espaço dedicado à escrita, onde psicanálise, cultura e o cotidiano se encontram.</p>
+    </div>
+  </section>
+
+  <!-- Grid de Postagens Automático -->
+  <section style="padding-top: 0;">
+    <div class="container">
+      
+      <!-- Filtros de Categorias -->
+      <div class="blog-filters">
+        <button class="filter-btn active" data-target="todos">Todos</button>
+        <button class="filter-btn" data-target="psicanalise">Psicanálise</button>
+        <button class="filter-btn" data-target="cultura-e-arte">Cultura e Arte</button>
+        <button class="filter-btn" data-target="cotidiano">Cotidiano</button>
+      </div>
+
+      <!-- Grid dinâmico gerado pelo Jekyll -->
+      <div class="grid-3">
+        
+        {% for post in site.posts %}
+        <article class="blog-card" data-category="{{ post.category | slugify }}">
+          <img src="{% if post.image %}{{ post.image }}{% else %}https://via.placeholder.com/600x400/EFECE4/575D55?text=Gabriel+Bueno+Psicologo{% endif %}" alt="{{ post.title }}" class="blog-image">
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span class="blog-tag">{{ post.category }}</span>
+              <span class="blog-date">{{ post.date | date: "%d %b %Y" }}</span>
+            </div>
+            <h2 class="blog-title">{{ post.title }}</h2>
+            <p class="blog-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+            <a href="{{ post.url | relative_url }}" class="blog-link">
+              Ler artigo completo
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+          </div>
+        </article>
+        {% endfor %}
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Script para os botões de filtro continuarem funcionando -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const cards = document.querySelectorAll('.blog-card');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const target = btn.getAttribute('data-target');
+
+          cards.forEach(card => {
+            if (target === 'todos' || card.getAttribute('data-category') === target) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
